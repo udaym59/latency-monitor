@@ -14,8 +14,8 @@ pnpm install
 pnpm dev          # api → http://localhost:3001, web → http://localhost:5173
 ```
 
-Env files are optional in dev — both apps fall back to the values in their `.env.example`.
-To override, copy them:
+The API needs a MongoDB connection string (`MONGO_URI`) — see [`packages/api/README.md`](packages/api/README.md).
+The web app falls back to the value in its `.env.example`. Copy both:
 
 ```bash
 cp packages/api/.env.example packages/api/.env
@@ -35,7 +35,7 @@ cp packages/web/.env.example packages/web/.env
 ```
 packages/
   shared/   # types only, consumed as TS source (no build step)
-  api/      # Express 5 — features/<name>/<name>.route.ts
+  api/      # Express 5 + MongoDB + node-cron checker — features/<name>/*
   web/      # React 18 + Tailwind 4 — features/<name>/*.tsx, lib/api.ts
             # design tokens live in src/index.css (@theme); no tailwind/postcss config
 ```
