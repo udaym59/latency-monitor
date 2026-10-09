@@ -5,6 +5,7 @@ import { env } from './env';
 import { startChecker, stopChecker } from './features/checker/checker.cron';
 import { checksRouter } from './features/checks/checks.route';
 import { healthRouter } from './features/health/health.route';
+import { incidentsRouter } from './features/incidents/incidents.route';
 import { monitorsRouter } from './features/monitors/monitors.route';
 import { statsRouter } from './features/stats/stats.route';
 
@@ -24,6 +25,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/health', healthRouter);
 app.use('/monitors/:id/checks', checksRouter);
 app.use('/monitors/:id/stats', statsRouter);
+app.use('/monitors/:id/incidents', incidentsRouter);
 app.use('/monitors', monitorsRouter);
 
 app.use((_req, res) => {

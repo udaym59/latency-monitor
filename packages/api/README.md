@@ -32,6 +32,7 @@ In Atlas → Network Access, allow your current IP.
 | DELETE | `/monitors/:id`         | `204`; cascades checks + incidents                          |
 | GET    | `/monitors/:id/checks`  | newest first, `?limit=1..500` (default 100)                 |
 | GET    | `/monitors/:id/stats`   | `MonitorStats` over the last 24h                            |
+| GET    | `/monitors/:id/incidents` | open first, then newest; resolved ones from last 30 days  |
 
 `intervalMinutes` ∈ `1, 5, 10, 15, 30, 60`. Validation errors → `400 { error, issues }`.
 
